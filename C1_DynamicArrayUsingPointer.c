@@ -75,3 +75,18 @@ void menu() {
     printf("6. Exit\n");
     printf("--------------------\n");
 }
+
+int* createArray(int n) {
+    int *arr=(int*)malloc(sizeof(int)*n);
+    if (arr==NULL) {
+        printf("Memory Allocation Failed");
+        exit(1);
+    }
+    printf("Enter %d elements:\n ",n);
+    for(int i=0;i<n;i++) {
+        printf("Enter element %d: ",i+1);
+        scanf("%d",&arr[i]);
+    }
+    return arr;
+}
+
