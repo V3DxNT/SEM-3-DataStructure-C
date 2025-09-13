@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void menu();
+int* createArray(int);
+void displayArray(int*, int);
+int* insertElem(int*, int, int,int);
+int* deleteElem(int*, int, int);
+void searchElem(int*, int, int);
+
 int main() {
     int *arr=NULL;
     int n=0,choice,elem,pos;
@@ -20,7 +27,7 @@ int main() {
 
             case 2:
                 if (arr==NULL) printf("Array is Not yet Created");
-                displayArray();
+                displayArray(arr,n);
                 break;
 
             case 3:
@@ -55,7 +62,16 @@ int main() {
                 printf("Invalid Choice");
         }
     }
-        }
+}
 
-    }
+
+void menu() {
+    printf("---------MENU-----------\n");
+    printf("1. Create Array\n");
+    printf("2. Display Array\n");
+    printf("3. Insert Element\n");
+    printf("4. Delete Element\n");
+    printf("5. Search Element\n");
+    printf("6. Exit\n");
+    printf("--------------------\n");
 }
