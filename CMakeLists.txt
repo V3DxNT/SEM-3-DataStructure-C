@@ -21,5 +21,6 @@ foreach(src_file ${SOURCES})
     # Get the filename without extension
     get_filename_component(exe_name ${src_file} NAME_WE)
     add_executable(${exe_name} ${src_file}
-            C1_DynamicArrayUsingPointer.c)
+            C1_DynamicArrayUsingPointer.c
+            C2_InfixToPostfix.c)
 endforeach()
