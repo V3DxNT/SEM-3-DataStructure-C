@@ -87,3 +87,11 @@ void infix_to_postfix(char infix[]) {
     printf("PostFix Expression is:  %s",postfix);
 }
 
+int main() {
+    char infix[MAX];
+    printf("Enter Infix Expression : ");
+    scanf("%s",infix);
+    infix_to_postfix(infix);
+    return 0;
+}
+
