@@ -114,3 +114,34 @@ int* insertElem(int* arr, int *n, int elem, int pos) {
     printf("Element %d Inserted at position %d",elem,pos);
     return arr;
 }
+
+//Function to delete an element from a position
+int* deleteElem(int* arr, int *n, int pos) {
+    if (pos < 0 || pos > *n ) {
+        printf("Invalid Position");
+        return arr;
+    }
+    int deleted= arr[pos];
+    for (int i=pos;i<*n-1;i++) {
+        arr[i]=arr[i+1];
+    }
+    arr=(int*)realloc(arr, sizeof(int)*(*n-1));
+    (*n)--;
+    printf("Element %d Deleted at position %d",deleted,pos);
+    return arr;
+}
+
+//Function to Search an element in the Array
+void searchElem(int* arr, int n, int elem) {
+    int found=0;
+    for(int i=0;i<n;i++) {
+        if(arr[i]==elem) {
+            printf("Element found at Index : %d",i);
+            return;
+        }
+    }
+    if (!found) {
+        printf("Element not found in the Array");
+    }
+}
+
