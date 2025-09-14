@@ -24,3 +24,11 @@ char pop() {
     return STACK[top--];
 }
 
+char peek() {
+    if (top == -1) {
+        printf("Stack UnderFlow : is empty\n");
+        return -1;
+    }
+    return STACK[top];
+}
+
