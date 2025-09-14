@@ -76,6 +76,7 @@ void menu() {
     printf("--------------------\n");
 }
 
+//Function to Create a Array using Pointer by defining the Size
 int* createArray(int n) {
     int *arr=(int*)malloc(sizeof(int)*n);
     if (arr==NULL) {
@@ -90,3 +91,26 @@ int* createArray(int n) {
     return arr;
 }
 
+//Function to Display Array Elements
+void displayArray(int* arr, int n) {
+    printf("Displaying Array\n");
+    for(int i=0;i<n;i++) {
+        printf("Index %d -> %d",i,arr[i]);
+    }
+    return;
+}
+
+int* insertElem(int* arr, int *n, int elem, int pos) {
+    if (pos < 0 || pos > *n ) {
+        printf("Invalid Position");
+        return arr;
+    }
+    arr= (int*)realloc(arr, sizeof(int)*(*n+1));
+    for (int i=*n;i > pos;i--) {
+        arr[i]=arr[i-1];
+    }
+    arr[pos]=elem;
+    (*n)++;
+    printf("Element %d Inserted at position %d",elem,pos);
+    return arr;
+}
