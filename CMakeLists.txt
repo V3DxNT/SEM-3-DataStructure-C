@@ -1,26 +1,45 @@
-#cmake_minimum_required(VERSION 3.31)
-#project(SEM_3_DS_C C)
-#
-#set(CMAKE_C_STANDARD 11)
-#
-## Automatically include all .c files in the project
-#file(GLOB SOURCES "*.c")
-#
-#add_executable(SEM_3_DS_C ${SOURCES}
-#        check.c)
-#
-
 cmake_minimum_required(VERSION 3.16)
 project(SEM_3_DS_C C)
 
 set(CMAKE_C_STANDARD 11)
 
-# Create one executable per C file
-file(GLOB SOURCES "*.c")
-foreach(src_file ${SOURCES})
-    # Get the filename without extension
-    get_filename_component(exe_name ${src_file} NAME_WE)
-    add_executable(${exe_name} ${src_file}
-            C1_DynamicArrayUsingPointer.c
-            C2_InfixToPostfix.c)
-endforeach()
+# Executable for DynamicArray program
+add_executable(C1_DynamicArrayUsingPointer
+        C1_DynamicArrayUsingPointer.c
+        # add helper files here if any
+)
+
+# Executable for InfixToPostfix program
+add_executable(C2_InfixToPostfix
+        C2_InfixToPostfix.c
+        # add helper files here if any
+)
+
+#cmake_minimum_required(VERSION 3.16)
+#project(SEM_3_DS_C C)
+#
+#set(CMAKE_C_STANDARD 11)
+#
+## Get all C source files
+#file(GLOB ALL_C_FILES "*.c")
+#
+## Lists to store programs and modules
+#set(PROGRAMS "")
+#set(MODULES "")
+#
+## Separate files with main (programs) from helper modules
+#foreach(file ${ALL_C_FILES})
+#    file(READ ${file} FILE_CONTENT)
+#    if(FILE_CONTENT MATCHES "\\bmain\\s*\\(")
+#        list(APPEND PROGRAMS ${file})
+#    else()
+#        list(APPEND MODULES ${file})
+#    endif()
+#endforeach()
+#
+## Create one executable per program, linking helper modules
+#foreach(prog ${PROGRAMS})
+#    # Get the program name without extension
+#    get_filename_component(prog_name ${prog} NAME_WE)
+#    add_executable(${prog_name} ${prog} ${MODULES})
+#endforeach()

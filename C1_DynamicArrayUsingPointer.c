@@ -4,15 +4,15 @@
 void menu();
 int* createArray(int);
 void displayArray(int*, int);
-int* insertElem(int*, int, int,int);
-int* deleteElem(int*, int, int);
+int* insertElem(int*, int*, int,int);
+int* deleteElem(int*, int*, int);
 void searchElem(int*, int, int);
 
 int main() {
     int *arr=NULL;
     int n=0,choice,elem,pos;
 
-    printf("Dynamic Array Operations Using Pointers ");
+    printf("Dynamic Array Operations Using Pointers\n\n ");
 
     while(1) {
         menu();
@@ -20,46 +20,46 @@ int main() {
         scanf("%d",&choice);
         switch(choice) {
             case 1:
-                printf("Enter the number of elements: ");
+                printf("\nEnter the number of elements: ");
                 scanf("%d",&n);
                 arr=createArray(n);
                 break;
 
             case 2:
-                if (arr==NULL) printf("Array is Not yet Created");
+                if (arr==NULL) printf("\nArray is Not yet Created\n");
                 displayArray(arr,n);
                 break;
 
             case 3:
 
-                printf("Enter the element to insert: ");
+                printf("\nEnter the element to insert: ");
                 scanf("%d",&elem);
 
-                printf("Enter the position to insert: ");
+                printf("\nEnter the position to insert: ");
                 scanf("%d",&pos);
 
                 arr=insertElem(arr,&n,elem,pos);
                 break;
 
             case 4:
-                printf("Enter the position to delete (0 to %d): ",n-1);
+                printf("\nEnter the position to delete (0 to %d): ",n-1);
                 scanf("%d",&pos);
 
                 arr=deleteElem(arr,&n,pos);
                 break;
 
             case 5:
-                printf("Enter the element to search: ");
+                printf("\nEnter the element to search: ");
                 scanf("%d",&elem);
                 searchElem(arr,n,elem);
                 break;
             case 6:
-                printf("Exiting...\n");
+                printf("\n\nExiting...\n");
                 free(arr);
                 exit(0);
 
             default:
-                printf("Invalid Choice");
+                printf("\nInvalid Choice\n");
         }
     }
 }
@@ -95,7 +95,7 @@ int* createArray(int n) {
 void displayArray(int* arr, int n) {
     printf("Displaying Array\n");
     for(int i=0;i<n;i++) {
-        printf("Index %d -> %d",i,arr[i]);
+        printf("Index %d -> %d\n", i, arr[i]);
     }
     return;
 }
@@ -117,7 +117,7 @@ int* insertElem(int* arr, int *n, int elem, int pos) {
 
 //Function to delete an element from a position
 int* deleteElem(int* arr, int *n, int pos) {
-    if (pos < 0 || pos > *n ) {
+    if (pos < 0 || pos >= *n ) {
         printf("Invalid Position");
         return arr;
     }
@@ -140,8 +140,6 @@ void searchElem(int* arr, int n, int elem) {
             return;
         }
     }
-    if (!found) {
-        printf("Element not found in the Array");
-    }
+    printf("Element not found in the Array");
 }
 
