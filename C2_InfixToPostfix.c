@@ -32,3 +32,58 @@ char peek() {
     return STACK[top];
 }
 
+//Function to return precedence of operator
+int precedence(char op) {
+    switch(op) {
+        case '^':
+            return 3;
+
+        case '*':
+        case '/':
+            return 2;
+
+        case '+':
+        case '-':
+            return 1;
+
+        default:
+            return 0;
+    }
+}
+
+//Function to convert Infix to Postfix
+void infix_to_postfix(char infix[]) {
+    char postfix[MAX];
+    int i,k=0;
+    char ch;
+
+    for (i=0;infix[i]!='\0';i++) {
+        ch=infix[i];
+
+        if (isalnum(ch)) {
+            postfix[k++]=ch;
+        }
+        else if (ch=='(') {
+            push(ch);
+        }
+        else if (ch==')') {
+            while (peek()!= '(' && top!=-1) {
+                postfix[k++]=pop();
+            }
+            pop();
+        }
+        else {
+            while (precedence(peek()) >= precedence(ch)) {
+                postfix[k++]=pop();
+            }
+            push(ch);
+        }
+    }
+    //Pop remaining operators
+    while (top!=-1) {
+        postfix[k++]=pop();
+    }
+    postfix[k]='\0';
+    printf("PostFix Expression is:  %s",postfix);
+}
+
