@@ -16,3 +16,11 @@ void push(char ch) {
     STACK[++top] = ch;
 }
 
+char pop() {
+    if (top == -1) {
+        printf("Stack UnderFlow : is empty\n");
+        return -1;
+    }
+    return STACK[top--];
+}
+
