@@ -90,3 +90,18 @@ void push() {
     stack[++top] = b;  // Push book onto stack
     printf("\nBook pushed successfully.\n");
 }
+
+// POP operation
+void pop() {
+    if (top == -1) {
+        printf("\nStack Underflow! No books to remove.\n");
+        return;
+    }
+
+    BOOK b = stack[top--];  // Pop the top book from the stack
+
+    printf("\nPopped Book Details:\n");
+    printf("ISBN: %s | Title: %s | Author: %s | Price: %.2f\n",
+           b.ISBN, b.Title, b.Author, b.Price);
+}
+
