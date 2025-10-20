@@ -105,3 +105,17 @@ void pop() {
            b.ISBN, b.Title, b.Author, b.Price);
 }
 
+// Display Stack
+void display() {
+    if (top == -1) {
+        printf("\nStack is empty.\n");
+        return;
+    }
+
+    printf("\nBooks in Stack (Top to Bottom):\n");
+    for (int i = top; i >= 0; i--) {
+        printf("[%d] ISBN: %s | Title: %s | Author: %s | Price: %.2f\n",
+               i, stack[i].ISBN, stack[i].Title, stack[i].Author, stack[i].Price);
+    }
+}
+
