@@ -59,6 +59,34 @@ int main() {
                 printf("Invalid choice! Please select 1-4.\n");
         }
     }
-
     return 0;
+}
+
+// PUSH operation
+void push() {
+    if (top == MAX - 1) {
+        printf("\nStack Overflow! Cannot add more books.\n");
+        return;
+    }
+
+    BOOK b;
+
+    printf("Enter ISBN: ");
+    fgets(b.ISBN, sizeof(b.ISBN), stdin);
+    b.ISBN[strcspn(b.ISBN, "\n")] = '\0';  // Remove trailing newline
+
+    printf("Enter Title: ");
+    fgets(b.Title, sizeof(b.Title), stdin);
+    b.Title[strcspn(b.Title, "\n")] = '\0';
+
+    printf("Enter Author: ");
+    fgets(b.Author, sizeof(b.Author), stdin);
+    b.Author[strcspn(b.Author, "\n")] = '\0';
+
+    printf("Enter Price: ");
+    scanf("%f", &b.Price);
+    getchar();  // Clear newline left in input buffer
+
+    stack[++top] = b;  // Push book onto stack
+    printf("\nBook pushed successfully.\n");
 }
