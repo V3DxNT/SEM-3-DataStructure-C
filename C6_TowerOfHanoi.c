@@ -14,3 +14,14 @@ int main() {
 
     TOI(n,s,a,d);
 }
+
+void TOI(int n,char s,char a,char d) {
+    if(n==1) {
+        printf("Move disk from %c to %c",s,d);
+        return;
+    }
+
+    TOI(n-1,s,d,a);
+    TOI(1,s,a,d);
+    TOI(n-1,a,s,d);
+}
