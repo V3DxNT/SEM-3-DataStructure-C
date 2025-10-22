@@ -68,3 +68,36 @@ void playEnd() {
     printf("Playing Songs in Reverse Order\n");
     playEndRec(head);
 }
+
+void delStart() {
+    if (!head) {
+        printf("No Song in the List\n");
+        return;
+    }
+    Node* temp = head;
+    head=head->next;
+    printf("Deleted Song:%s\n",temp->song);
+    free(temp);
+}
+
+void delEnd() {
+    if (head==NULL) {
+        printf("No Song in the List\n");
+        return;
+    }
+    if (head->next==NULL) {
+        printf("Deleted %s\n",head->song);
+        free(head);
+        head=NULL;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next!=NULL && temp->next->next!=NULL) {
+        temp = temp->next;
+    }
+    printf("Deleted %s\n",temp->next->song);
+    free(temp->next);
+    temp->next=NULL;
+    free(temp);
+    return;
+}
