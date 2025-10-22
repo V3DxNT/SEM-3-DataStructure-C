@@ -9,7 +9,8 @@ typedef struct Call {
 }Call;
 
 Call queueArr[MAX];
-int front, rear=-1;
+int front=-1;
+int rear=-1;
 
 int isEmpty() {
     return (front == -1 && rear == -1);
