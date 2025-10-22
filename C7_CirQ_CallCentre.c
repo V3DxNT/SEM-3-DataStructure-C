@@ -51,3 +51,27 @@ void deleteCal() {
         front = (front + 1) % MAX;
     }
 }
+
+void displayQueue() {
+    if (isEmpty()) {
+        printf("Queue Underflow\n");
+        return;
+    }
+    printf("Current Waiting Calls are: \n");
+    for (int i = front; i != rear; i = (i + 1) % MAX) {
+        printf("Caller Id: %d\nCaller Name:%s", queueArr[i].callID,queueArr[i].callerName);
+        printf("\n-------------\n");
+    }
+}
+
+
+Call inputCall() {
+    Call c;
+    printf("Enter Call ID: ");
+    scanf("%d", &c.callID);
+
+    printf("Enter Call Name: ");
+    scanf("%s", c.callerName);
+
+    return c;
+}
