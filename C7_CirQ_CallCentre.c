@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 
 #define MAX 100
 
@@ -38,7 +37,7 @@ void addCall(Call c) {
     printf("Added Call: Call ID %d Caller Name %s",c.callID,c.callerName);
 }
 
-void deleteCal() {
+void deleteCall() {
     if (isEmpty()) {
         printf("Queue Underflow\n");
         return;
@@ -74,4 +73,33 @@ Call inputCall() {
     scanf("%s", c.callerName);
 
     return c;
+}
+
+void menu() {
+    printf("\n-----Call Center----------\n");
+    printf("1. Add Call\n");
+    printf("2. Delete Call\n");
+    printf("3. Display Calls\n");
+    printf("4. Exit\n");
+}
+
+int main() {
+    int choice;
+    while (1) {
+        menu();
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:addCall(inputCall()); break;
+
+            case 2:deleteCall(); break;
+
+            case 3:displayQueue(); break;
+
+            case 4:exit(0);
+
+            default:printf("Wrong Choice\n");
+        }
+    }
+    return 0;
 }
