@@ -54,4 +54,17 @@ void playStart() {
     return;
 }
 
+void playEndRec(Node* node) {
+    if (!node) return;
+    playEndRec(node->next);
+    printf("%s\n",node->song);
+}
 
+void playEnd() {
+    if (head == NULL) {
+        printf("No Song in the List\n");
+        return;
+    }
+    printf("Playing Songs in Reverse Order\n");
+    playEndRec(head);
+}
